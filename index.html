@@ -63,6 +63,20 @@
         <div class="card"><img src="/images/a9871ac4-0083-4dc6-a413-e6715a69d3a8.jpg" alt="Beautiful woman" loading="lazy"></div>
         <div class="card"><img src="/images/c9b683c0-0cec-4df3-ba7c-d80c42f7ce70.jpg" alt="Beautiful woman" loading="lazy"></div>
         <!-- Add more images to the folder and say "Update HTML" to regenerate -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const gallery = document.querySelector('.gallery');
+    if (!gallery) return console.error('Gallery not found');
+    const cards = Array.from(gallery.children);
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    gallery.innerHTML = '';
+    cards.forEach(card => gallery.appendChild(card));
+    console.log('Shuffled ' + cards.length + ' cards'); // Debug
+  });
+</script>
     </div>
 </body>
 </html>
